@@ -1,17 +1,31 @@
 ## Nelson Turbine Maintenance Model
 
-Predict turbine engine maintenance tasks, eliminating the downtime caused by reactive maintenance, and reducing the cost of preventative maintenance.
+This project is a training exercise for a 3-day AWS SageMaker training. The project goal is to predict turbine engine maintenance needs, eliminating the downtime caused by reactive maintenance, and reducing the cost of preventative maintenance.
+
+### Contents
+
+These Jupyter notebooks are used: 
+
+* etl.ipynb - This covers reading in the CSV data files and preparing them for modeling. 
+* modeling.ipynb - Partitions the data, and runs through SageMaker's built-in XGBoost model. 
+* hyperparameters.ipynb - Code for hyperparameter tuning of the XGBoost model. 
 
 ### Datasets
 
-Maintenance Data Sets: https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan Includes:
+Maintenance Data Sets: https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan 
+
+Data fields: 
 
 * Unit number
 * Time, in cycles
 * Operational setting 1
 * Operational setting 2
-* …
-* Operational setting 26
+* Operational setting 3
+* Sensor measurement 1
+* ...
+* Sensor measurement 26
+
+The training data set contains one record per unit until failure. The testing data set truncates each unit some time prior to failure. Remaining Useful Life (RUL) in cycles for the test set units is given in separate files. 
 
 ### Modeling Strategy
 
